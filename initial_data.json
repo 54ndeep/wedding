@@ -1,0 +1,231 @@
+{
+  "id": "5ef58413-29e4-1bea-4c02-97739b87be9b",
+  "slug": "andrew-claire-mahal-gold",
+  "title": "Andrew & Claire",
+  "data": {
+    "templateId": "mahal_gold",
+    "activeLocales": [
+      "en"
+    ],
+    "groomFullName": "Andrew Donovan",
+    "groomShortName": "Andrew",
+    "brideFullName": "Claire Marlowe",
+    "brideShortName": "Claire",
+    "groomFather": "James Donovan",
+    "groomMother": "Olivia Donovan",
+    "brideFather": "Ethan Marlowe",
+    "brideMother": "Madison Marlowe",
+    "groomBirthOrder": {
+      "en": ""
+    },
+    "brideBirthOrder": {
+      "en": ""
+    },
+    "customAnnouncementText": {
+      "en": "Together with our families\nwe invite you to our wedding"
+    },
+    "address": {
+      "en": "The Cordelle\nNashville, TN"
+    },
+    "mapAddress": "The Cordelle, Nashville, TN",
+    "date": "2027-06-15",
+    "guestReceptionTime": "17:00",
+    "time": "18:00",
+    "banquetTime": "19:30",
+    "galleryImages": [
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/f83d243670c753a3a8de98002b84126e357b748067b4099372400e34a15278ba.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/cb444178a6dd5753046eb92dd6c85bc433fcafb9139d14ff843aa96c9a29efa1.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/e44778eff5ba6bce43ff44630d64afd998314f6599a504de52c4604889658464.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/b572d32a98e5893a0a485e35ce0016d85fc6e35e03ca4b27151124f0e1f91fd8.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/1ca6ea249bd32431f552ad193f4cb9e109c3e3e01016a76ddd6d67572da63d21.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/e2b7e8a5add0cd52c62a4d326dbf25285299afb96bf9130aa0330c5f37282f7e.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/65c80c596d85f34befd4f244b1ed0d45d147ffcededcea5a44611fdcfedb9755.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/c4aa84136b7a0436d5dcfe8acf1a06740412334756beadfd1acfc9924a4895a8.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/390c49fca6f000eaab3de4113fc3ac4c5e555a0a9e6c21867e919d47392ee185.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/b72a19c1721e965eea6fd2853d550c3ffe2bfb753db8b9034155c6456fff40b0.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/faf693fa483740c47624845c2978025af25a83b87800c0eaef7923438ce83c41.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    ],
+    "ceremonies": [
+      {
+        "id": "c1",
+        "header": {
+          "en": "WEDDING CEREMONY\nCathedral of the Incarnation"
+        },
+        "date": "2027-06-15",
+        "time": "18:00"
+      },
+      {
+        "id": "c2",
+        "header": {
+          "en": "RECEPTION\nThe Cordelle"
+        },
+        "date": "2027-06-15",
+        "time": "19:30"
+      }
+    ],
+    "showTimeline": true,
+    "timelineEvents": [
+      {
+        "id": "t1",
+        "time": "17:30",
+        "label": {
+          "en": "Guests arrive and are seated"
+        }
+      },
+      {
+        "id": "t2",
+        "time": "18:00",
+        "label": {
+          "en": "Processional and vows"
+        }
+      },
+      {
+        "id": "t3",
+        "time": "18:45",
+        "label": {
+          "en": "Confetti and group photographs"
+        }
+      },
+      {
+        "id": "t4",
+        "time": "19:30",
+        "label": {
+          "en": "Cocktail hour"
+        }
+      },
+      {
+        "id": "t5",
+        "time": "20:30",
+        "label": {
+          "en": "Wedding breakfast served"
+        }
+      },
+      {
+        "id": "t6",
+        "time": "22:00",
+        "label": {
+          "en": "Speeches and toasts"
+        }
+      },
+      {
+        "id": "t7",
+        "time": "22:45",
+        "label": {
+          "en": "Cutting of the cake"
+        }
+      },
+      {
+        "id": "t8",
+        "time": "23:00",
+        "label": {
+          "en": "First dance"
+        }
+      },
+      {
+        "id": "t9",
+        "time": "01:00",
+        "label": {
+          "en": "Evening send-off"
+        }
+      }
+    ],
+    "showDresscode": true,
+    "dresscodeColors": [
+      "#432b14",
+      "#6b533c",
+      "#e3cbb4"
+    ],
+    "giftDisplayMode": "gift_box",
+    "giftMethods": [
+      {
+        "id": "g1",
+        "for": "groom",
+        "type": "zelle",
+        "recipient": "wedding.demo@example.com",
+        "bankName": "Example Bank"
+      },
+      {
+        "id": "g2",
+        "for": "bride",
+        "type": "venmo",
+        "username": "wedding-demo"
+      }
+    ],
+    "galleryLayout": "cards",
+    "musicTrackId": "romantic-001",
+    "heroPhoto": "https://assets.chungdoi.com/photo-library/design/e44778eff5ba6bce43ff44630d64afd998314f6599a504de52c4604889658464.webp",
+    "groomPhoto": "https://assets.chungdoi.com/photo-library/design/f83d243670c753a3a8de98002b84126e357b748067b4099372400e34a15278ba.webp",
+    "bridePhoto": "https://assets.chungdoi.com/photo-library/design/cb444178a6dd5753046eb92dd6c85bc433fcafb9139d14ff843aa96c9a29efa1.webp"
+  },
+  "is_demo": true,
+  "is_paid": true,
+  "og_fields_updated_at": "$undefined",
+  "updated_at": "$undefined",
+  "created_at": "$undefined"
+}
