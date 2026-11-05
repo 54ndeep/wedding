@@ -736,15 +736,24 @@ export default function WeddingInvitation() {
   });
   };
 
-  initInteractive();
+  try {
+    initInteractive();
+  } catch (err) {
+    console.error('Interactive engine error:', err);
+  }
 
 
     // Handle initial query param if open=1
-    if (shouldOpen) {
-      const env = document.getElementById('inviteEnvelope');
-      const widget = document.getElementById('floatingMusicWidget');
-      if (env) env.style.display = 'none';
-      if (widget) widget.style.display = 'block';
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('open') === '1') {
+        const env = document.getElementById('inviteEnvelope');
+        const widget = document.getElementById('floatingMusicWidget');
+        if (env) env.style.display = 'none';
+        if (widget) widget.style.display = 'block';
+      }
+    } catch (err) {
+      console.warn('URL param check error:', err);
     }
 
     return () => {
@@ -757,6 +766,7 @@ export default function WeddingInvitation() {
   return (
     <div
       ref={containerRef}
+      suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: INVITATION_HTML }}
     />
   );
