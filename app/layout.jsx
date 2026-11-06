@@ -3,8 +3,8 @@ import '../site_css/08fc569d88870472.css';
 import '../css/mahal-gold.css';
 
 export const metadata = {
-  title: 'Mahal Gold Template - Indian Palace Wedding Invitation | ChungDoi',
-  description: 'A regal South-Asian template with a Rajasthani sandstone palace mirrored in still water, a festival elephant and cascading magenta bougainvillea, framed by a gold arch on warm cream. Ideal for Indian and Mughal-style weddings.',
+  title: 'Anita & Neeraj Wedding Invitation | The Maurya Family',
+  description: 'Together with the blessings of Lord Ganesha and our beloved elders, we invite you to celebrate the wedding of Anita Maurya (Aanchal) & Neeraj Maurya on 03 December 2026. The Maurya Family.',
   icons: {
     icon: '/favicon.ico',
   },
