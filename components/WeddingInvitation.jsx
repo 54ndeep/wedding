@@ -10,6 +10,7 @@ export default function WeddingInvitation() {
   useEffect(() => {
     let countdownTimer = null;
     let cleanupAutoScroll = null;
+    let cleanupCarousel = null;
 
     const initInteractive = () => {
       // --- 1. Audio Elements & Web Audio API ---
@@ -450,6 +451,27 @@ export default function WeddingInvitation() {
       const totalCards = carouselCards.length || 11;
       let activeCarouselIndex = 0;
 
+      let carouselInterval = null;
+
+      function startCarouselTimer() {
+        if (carouselInterval) clearInterval(carouselInterval);
+        carouselInterval = setInterval(() => {
+          updateCarousel3D(activeCarouselIndex + 1);
+        }, 3000);
+      }
+
+      function resetCarouselTimer() {
+        if (carouselInterval) clearInterval(carouselInterval);
+        startCarouselTimer();
+      }
+
+      cleanupCarousel = () => {
+        if (carouselInterval) clearInterval(carouselInterval);
+      };
+
+      // Auto-change images every 3 seconds
+      startCarouselTimer();
+
       function updateCarousel3D(activeIdx) {
         activeCarouselIndex = (activeIdx + totalCards) % totalCards;
 
@@ -488,6 +510,7 @@ export default function WeddingInvitation() {
       if (galleryPrevBtn) {
         galleryPrevBtn.addEventListener('click', (e) => {
           e.stopPropagation();
+          resetCarouselTimer();
           updateCarousel3D(activeCarouselIndex - 1);
         });
       }
@@ -495,12 +518,14 @@ export default function WeddingInvitation() {
       if (galleryNextBtn) {
         galleryNextBtn.addEventListener('click', (e) => {
           e.stopPropagation();
+          resetCarouselTimer();
           updateCarousel3D(activeCarouselIndex + 1);
         });
       }
 
       carouselCards.forEach((card, idx) => {
         card.addEventListener('click', () => {
+          resetCarouselTimer();
           if (idx === activeCarouselIndex) {
             openLightbox(idx);
           } else {
@@ -518,9 +543,22 @@ export default function WeddingInvitation() {
         }, { passive: true });
         carouselTouchContainer.addEventListener('touchend', (e) => {
           const cTouchEndX = e.changedTouches[0].screenX;
-          if (cTouchEndX - cTouchStartX > 40) updateCarousel3D(activeCarouselIndex - 1);
-          else if (cTouchStartX - cTouchEndX > 40) updateCarousel3D(activeCarouselIndex + 1);
+          if (cTouchEndX - cTouchStartX > 40) {
+            resetCarouselTimer();
+            updateCarousel3D(activeCarouselIndex - 1);
+          } else if (cTouchStartX - cTouchEndX > 40) {
+            resetCarouselTimer();
+            updateCarousel3D(activeCarouselIndex + 1);
+          }
         }, { passive: true });
+
+        // Pause rotation on hover, resume on leave
+        carouselTouchContainer.addEventListener('mouseenter', () => {
+          if (carouselInterval) clearInterval(carouselInterval);
+        });
+        carouselTouchContainer.addEventListener('mouseleave', () => {
+          startCarouselTimer();
+        });
       }
 
       // Lightbox Modal
@@ -559,6 +597,7 @@ export default function WeddingInvitation() {
       }
 
       function openLightbox(idx) {
+        if (carouselInterval) clearInterval(carouselInterval);
         showLightboxImage(idx);
         if (lightboxModal) {
           if (typeof lightboxModal.showModal === 'function') {
@@ -570,6 +609,7 @@ export default function WeddingInvitation() {
       }
 
       function closeLightbox() {
+        startCarouselTimer();
         if (lightboxModal) {
           if (typeof lightboxModal.close === 'function') {
             lightboxModal.close();
@@ -748,6 +788,7 @@ export default function WeddingInvitation() {
     }
 
     return () => {
+      if (cleanupCarousel) cleanupCarousel();
       if (cleanupAutoScroll) cleanupAutoScroll();
       if (countdownTimer) clearInterval(countdownTimer);
       const bgMusic = document.getElementById('bgMusic');
