@@ -9,6 +9,7 @@ export default function WeddingInvitation() {
 
   useEffect(() => {
     let countdownTimer = null;
+    let cleanupAutoScroll = null;
 
     const initInteractive = () => {
       // --- 1. Audio Elements & Web Audio API ---
@@ -190,6 +191,80 @@ export default function WeddingInvitation() {
         envelope.appendChild(burstContainer);
       }
 
+      // --- Smooth Slow Auto-Scroll Engine (Interrupted on visitor action) ---
+      let autoScrollActive = false;
+      let autoScrollRaf = null;
+      let autoScrollTimeout = null;
+      let currentScrollPos = 0;
+      const SCROLL_SPEED = 0.9; // Slow, elegant and readable speed (~55px/sec)
+
+      const interruptionEvents = [
+        'wheel',
+        'touchstart',
+        'touchmove',
+        'pointerdown',
+        'mousedown',
+        'keydown'
+      ];
+
+      function stopAutoScroll() {
+        if (!autoScrollActive && !autoScrollTimeout) return;
+        autoScrollActive = false;
+        if (autoScrollTimeout) {
+          clearTimeout(autoScrollTimeout);
+          autoScrollTimeout = null;
+        }
+        if (autoScrollRaf) {
+          cancelAnimationFrame(autoScrollRaf);
+          autoScrollRaf = null;
+        }
+        interruptionEvents.forEach(evt => {
+          window.removeEventListener(evt, stopAutoScroll, { passive: true });
+        });
+      }
+
+      cleanupAutoScroll = stopAutoScroll;
+
+      function startSlowAutoScroll() {
+        if (autoScrollActive || autoScrollTimeout) return;
+
+        // Register interruption events so ANY touch, drag, wheel, click or keypress stops auto-scroll
+        interruptionEvents.forEach(evt => {
+          window.addEventListener(evt, stopAutoScroll, { passive: true });
+        });
+
+        // Begin gentle scroll 1.4s after envelope opens, allowing visitor to first appreciate the Hero Arch
+        autoScrollTimeout = setTimeout(() => {
+          autoScrollTimeout = null;
+          autoScrollActive = true;
+          currentScrollPos = window.scrollY || window.pageYOffset || 0;
+
+          function stepScroll() {
+            if (!autoScrollActive) return;
+
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            if (currentScrollPos >= maxScroll - 5) {
+              stopAutoScroll();
+              return;
+            }
+
+            // Detect if visitor manually scrolled to a different offset
+            const actualScroll = window.scrollY || window.pageYOffset || 0;
+            if (Math.abs(actualScroll - currentScrollPos) > 6) {
+              stopAutoScroll();
+              return;
+            }
+
+            currentScrollPos += SCROLL_SPEED;
+            window.scrollTo(0, currentScrollPos);
+
+            autoScrollRaf = requestAnimationFrame(stepScroll);
+          }
+
+          autoScrollRaf = requestAnimationFrame(stepScroll);
+        }, 1400);
+      }
+
       function openEnvelope() {
         if (envelopeOpened) return;
         envelopeOpened = true;
@@ -238,10 +313,12 @@ export default function WeddingInvitation() {
               envelope.style.display = 'none';
             }, 400);
           }
+
           if (floatingMusicWidget) {
             floatingMusicWidget.style.display = 'block';
           }
           startMusic();
+          startSlowAutoScroll();
         }, 1300);
       }
 
@@ -264,6 +341,7 @@ export default function WeddingInvitation() {
           if (envelope) envelope.style.display = 'none';
           if (floatingMusicWidget) floatingMusicWidget.style.display = 'block';
           envelopeOpened = true;
+          startSlowAutoScroll();
         }
       } catch (e) {}
 
@@ -670,6 +748,7 @@ export default function WeddingInvitation() {
     }
 
     return () => {
+      if (cleanupAutoScroll) cleanupAutoScroll();
       if (countdownTimer) clearInterval(countdownTimer);
       const bgMusic = document.getElementById('bgMusic');
       if (bgMusic) bgMusic.pause();
