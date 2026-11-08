@@ -3,8 +3,8 @@ import '../site_css/08fc569d88870472.css';
 import '../css/mahal-gold.css';
 
 export const metadata = {
-  title: 'Anita & Neeraj Wedding Invitation | The Maurya Family',
-  description: 'Together with the blessings of Lord Ganesha and our beloved elders, we invite you to celebrate the wedding of Anita Maurya (Aanchal) & Neeraj Maurya on 03 December 2026. The Maurya Family.',
+  title: 'Neeraj & Anita Wedding Invitation | The Maurya Family',
+  description: 'Together with the blessings of Lord Ganesha and our beloved elders, we invite you to celebrate the wedding of Neeraj Maurya & Anita Maurya (Aanchal) on 03 December 2026. The Maurya Family.',
   icons: {
     icon: '/favicon.ico',
   },
